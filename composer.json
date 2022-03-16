@@ -1,0 +1,21 @@
+{
+    "name": "fraidoon/blog",
+    "description": "This will controll all  part of a blog activity.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Fraidoon\\Blog\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "Fraidoon",
+        "email": "fraydoun.fetrat@gmail.com"
+    }],
+    "minimum-stability": "dev",
+
+    "require": {
+        "livewire/livewire": "^2.7"
+    }
+
+}
