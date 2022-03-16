@@ -74,7 +74,9 @@ class Post extends Component
         $this->content = $data[0]->content;
         $this->photo = $data[0]->photo;
         $this->view_counter = $data[0]->view_counter;
-        $this->comment_counter = $data[0]->blogComments->count();
+        if($data[0]->blogComments->count() > 0){
+            $this->comment_counter = $data[0]->blogComments->count();
+        }
         $this->tags = $data[0]->tags;
         $this->blog_category = $data[0]->blogCategory->title;
         $this->adminname = $data[0]->admin->name;
