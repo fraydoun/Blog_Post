@@ -16,6 +16,13 @@
 
     "require": {
         "livewire/livewire": "^2.7"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fraidoon\\Blog\\BlogServiceProvider"
+            ]
+        }
     }
 
 }
