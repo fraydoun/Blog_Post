@@ -85,7 +85,7 @@ class Comment extends Component
                 'full_name' => strip_tags($this->full_name),
                 'email' => $this->email,
                 'phone' => strip_tags($this->phone),
-                'visiable' => strip_tags($this->visiable),
+                // 'visiable' => $this->visiable,
                 'blog_post_id' => $this->blog_post_id
             ]);
             
@@ -128,7 +128,7 @@ class Comment extends Component
                 'full_name' => strip_tags($this->full_name),
                 'email' => $this->email,
                 'phone' => strip_tags($this->phone),
-                'visiable' => strip_tags($this->visiable),
+                'visiable' => $this->visiable,
                 'blog_post_id' => $this->blog_post_id
             ]);
             $this->ResetVars();
