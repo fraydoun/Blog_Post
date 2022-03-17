@@ -25,6 +25,7 @@
                 </div>
                 
             </div>
+            
             <div class="widget-content widget-content-area">
                 
                 <div class="table-responsive">
@@ -94,7 +95,7 @@
                     
                     <div class="card component-card_6">
                         <div class="card-body">
-                            <p>به پست:&nbsp;{{$blogPostTitle}}</p>
+                            <p> نظر داده شده به پست:&nbsp;{{$blogPostTitle}}</p>
                             <p class="card-text">نظر: &nbsp;{{$comment}} </p>
                             <div class="user-info">
                                 <div class="media-body">
@@ -125,7 +126,18 @@
                     <h5 class="modal-comment" id="exampleModalLabel">ویرایش نظر</h5>
                 </div>
                 <div class="modal-body">
-                    
+                    <div class="form-group">
+                        <label for="Input">پست </label>
+                        <select id="Input"  class="form-control"  wire:model="blog_post_id">
+                            <option value="" data-hidden="true">پست را انتخاب کنید</option>
+                            @foreach ($blog_post as $post)
+                            <option value="{{$post->id}}" {{ $post->id == old('blog_post_id') ? ' selected' : '' }}>{{ $post->title }}</option>
+                            @endforeach
+                        </select>
+                        
+                        @error('blog_post_id') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
+
                     <div class="form-group">
                         <label for="input">نام و نام خانوادگی</label>
                         <input type="text" class="form-control" wire:model="full_name" id="input" placeholder="نام و نام خانوادگی را وارد کنید!">
@@ -174,6 +186,18 @@
                     <h5 class="modal-comment" id="exampleModalLabel">ایجاد  نظر</h5>
                 </div>
                 <div class="modal-body">
+                
+                    <div class="form-group">
+                        <label for="Input">پست </label>
+                        <select id="Input"  class="form-control"  wire:model="blog_post_id">
+                            <option value="" data-hidden="true">پست را انتخاب کنید</option>
+                            @foreach ($blog_post as $post)
+                            <option value="{{$post->id}}" {{ $post->id == old('blog_post_id') ? ' selected' : '' }}>{{ $post->title }}</option>
+                            @endforeach
+                        </select>
+                        
+                        @error('blog_post_id') <span class="text-danger">{{ $message }}</span>@enderror
+                    </div>
                     <div class="form-group">
                         <label for="input">نام و نام خانوادگی</label>
                         <input type="text" class="form-control" wire:model="full_name" id="input" placeholder="نام و نام خانوادگی را وارد کنید!">

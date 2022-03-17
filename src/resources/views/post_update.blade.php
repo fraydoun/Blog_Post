@@ -55,8 +55,10 @@
                 @if($post->photo != "")
                 <img src="{{asset($post->photo)}}" style="width: 20%;"class="card-img-top" alt="widget-card-2">
                 @endif
-                <input type="file" class="form-control" name="photo" id="photo" value="{{old('photo', $post->photo)}}">
-                @error('photo') <span class="text-danger">{{ $message }}</span>@enderror
+
+                <input type="file" class="form-control" name="newPhoto" id="newPhoto">
+                @error('newPhoto') <span class="text-danger">{{ $message }}</span>@enderror
+
               </div>
               
               <div class="form-group">
@@ -70,15 +72,21 @@
                 <input type="text" class="form-control" name="tags" id="tags" placeholder="برچسب ها را وارد کنید!" value="{{old('tags', $post->tags)}}">
                 @error('tags') <span class="text-danger">{{ $message }}</span>@enderror
               </div>
-              
+
               <div class="form-group">
-                <label for="tg">متن  کوتاه پست </label>
-                <textarea class="form-control" id="tg"  name="short_content" rows="3" placeholder="توضیحات  کوتاه پست را وارد نمایید...">{{old('short_content', $post->short_content)}}</textarea>
+                <label for="view_counter"> تعداد بازدید کننده  </label>
+                <input type="text" class="form-control" name="view_counter" id="view_counter" placeholder=" تعداد بازدید کننده را وارد کنید!" value="{{old('view_counter', $post->view_counter)}}">
+                @error('view_counter') <span class="text-danger">{{ $message }}</span>@enderror
+              </div>
+
+              <div class="form-group">
+                <label for="tg">متن  کوتاه  </label>
+                <textarea class="form-control" id="tg"  name="short_content" rows="3" placeholder="توضیحات   متن کوتاه را وارد نمایید...">{{old('short_content', $post->short_content)}}</textarea>
                 @error('short_content') <span class="text-danger">{{ $message }}</span>@enderror
               </div>
               
               <div class="form-group">
-                <label for="titleInput">متن کامل پست</label>
+                <label for="titleInput">متن مقاله</label>
                 <div  id="editor-container">  
                   {!!old('content', $post->content)!!} 
                 </div>
@@ -122,7 +130,7 @@
       ['clean']
       ]
     },
-    placeholder: 'توضیحات  کامل پست را وارد نمایید...',
+    placeholder: 'توضیحات  مقاله را وارد نمایید...',
     theme: 'snow'  // or 'bubble'
     
   });

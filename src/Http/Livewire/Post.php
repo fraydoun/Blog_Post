@@ -16,6 +16,7 @@ class Post extends Component
     public $deleteModal = false;
     public $modelId;
     public $title;
+    public $slug;
     public $short_content;  
     public $content;
     public $oldPhoto;
@@ -30,7 +31,8 @@ class Post extends Component
     public function ResetVars(){
         $this->search = null;
         $this->modelId = null;
-        $this->title = null;        
+        $this->title = null;
+        $this->slug = null;        
         $this->short_content = null;  
         $this->content = null;
         $this->oldPhoto =null;
@@ -70,6 +72,7 @@ class Post extends Component
         
         $this->modelId = $data[0]->id;
         $this->title = $data[0]->title;
+        $this->slug = $data[0]->slug;
         $this->short_content = $data[0]->short_content;  
         $this->content = $data[0]->content;
         $this->photo = $data[0]->photo;

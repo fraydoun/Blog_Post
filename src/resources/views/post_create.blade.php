@@ -66,13 +66,13 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="tg">متن  کوتاه پست </label>
-                                <textarea class="form-control" id="tg"  name="short_content" rows="3" placeholder="توضیحات  کوتاه پست را وارد نمایید...">{{old("short_content")}}</textarea>
+                                <label for="tg">متن  کوتاه  </label>
+                                <textarea class="form-control" id="tg"  name="short_content" rows="3" placeholder="توضیحات متن کوتاه را وارد نمایید...">{{old("short_content")}}</textarea>
                                 @error('short_content') <span class="text-danger">{{ $message }}</span>@enderror
                             </div>
                             
                             <div class="form-group">
-                                <label for="titleInput">متن کامل پست</label>
+                                <label for="titleInput">متن  مقاله</label>
                                 <div  id="editor-container">  
                                     {!!old("content")!!} 
                                 </div>
@@ -116,7 +116,7 @@
             ['clean']
             ]
         },
-        placeholder: 'توضیحات  کامل پست را وارد نمایید...',
+        placeholder: 'توضیحات  مقاله را وارد نمایید...',
         theme: 'snow'  // or 'bubble'
     });
     quill.on('text-change', function(delta, oldDelta, source) {

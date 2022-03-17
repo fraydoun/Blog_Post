@@ -29,7 +29,7 @@
                                 <th class="text-center">#</th>
                                 <th>دسته بندی</th>
                                 <th>عنوان</th>
-                                <th>متن کوتاه پست</th>
+                                <th>متن کوتاه </th>
                                 <th>برچسب</th>
                                 <th>نویسنده</th>
                                 <th>تعداد بازدید</th>
@@ -93,6 +93,7 @@
                     {{-- ///////////////////////// --}}
                     
                     <div class="card component-card_9">
+                        <p class="meta-date"> لینک:&nbsp;{{$slug }}</p>
                         @if($photo != "")
                         <img src="{{asset($photo)}}" style="width: 50%;"class="card-img-top" alt="widget-card-2">
                         @endif
@@ -100,10 +101,11 @@
                             <p class="meta-date">
                                 دسته:&nbsp;
                                 {{$blog_category}}</p>
-                            <p class="meta-date">{{$created_at }}</p>
-                            <h5 class="card-title">{{$title}}</h5>
-                            <p class="card-text">{{$short_content}}</p>
+                            <p class="meta-date">تاریخ ساخت:&nbsp;{{$created_at }}</p>
+                            <h5 class="card-title">عنوان:&nbsp;{{$title}}</h5>
+                            <p class="card-text">متن کوتاه:&nbsp;{{$short_content}}</p>
                             <div>
+                                <p>مقاله:</p>
                                 {!!$content!!}
                             </div>
                             <div class="meta-info">

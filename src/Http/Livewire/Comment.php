@@ -5,6 +5,7 @@ namespace Fraidoon\Blog\Http\Livewire;
 use Livewire\Component;
 
 use Fraidoon\Blog\Models\BlogComment;
+use Fraidoon\Blog\Models\BlogPost;
 
 use Livewire\WithPagination;
 
@@ -20,8 +21,9 @@ class Comment extends Component
     public $email;
     public $phone;
     public $visiable = false;
-    public $blog_post_id = 1;
+    public $blog_post_id;
     public $blogPostTitle;
+    public $blog_post=[];
 
     
     
@@ -30,8 +32,8 @@ class Comment extends Component
         'full_name' => 'required|max:200',
         'email' => 'required|email',
         'phone' => 'required|max:16',
-        'visiable' => 'boolean'
-
+        'visiable' => 'boolean',
+        'blog_post_id' => 'required'
     ];
     
     protected $messages = [
@@ -40,9 +42,10 @@ class Comment extends Component
         'full_name.required' => 'نام و نام خانوادگی وارد شود',
         'full_name.max' => 'نام و نام خانوادگی بیشتر از 200 حرف نباشد',
         'email.required' => 'ایمیل آدرس حتما وارد شود',
-        'email.max' => 'ایمیل آدرس معتبر وارد شود',
+        'email.email' => 'ایمیل آدرس معتبر وارد شود',
         'phone.required' => 'شماره موبایل حتما وارد شود',
         'phone.max' => 'شماره موبایل بیشتر از 16 حرف نباشد',
+        'blog_post_id' => 'پست را انتخاب کنید'
         // 'visiable.boolean' => 'چک باکس'
     ];
     
@@ -60,7 +63,7 @@ class Comment extends Component
     
     public function read()
     {
-        
+        $this->blog_post = BlogPost::get(['id','title']);
         $datas = BlogComment::with(['blogPost'])->latest()->paginate(5);
 
         return $datas;
@@ -78,11 +81,11 @@ class Comment extends Component
     {
         if($this->validate()){
             BlogComment::create([
-                'comment' => $this->comment,
-                'full_name' => $this->full_name,
+                'comment' => strip_tags($this->comment),
+                'full_name' => strip_tags($this->full_name),
                 'email' => $this->email,
-                'phone' => $this->phone,
-                'visiable' => $this->visiable,
+                'phone' => strip_tags($this->phone),
+                'visiable' => strip_tags($this->visiable),
                 'blog_post_id' => $this->blog_post_id
             ]);
             
@@ -121,11 +124,12 @@ class Comment extends Component
         if ($this->modelId) {
             $data = BlogComment::find($this->modelId);
             $data->update([
-                'comment' => $this->comment, 
-                'full_name' => $this->full_name,
+                'comment' => strip_tags($this->comment),
+                'full_name' => strip_tags($this->full_name),
                 'email' => $this->email,
-                'phone' => $this->phone,
-                'visiable' => $this->visiable,
+                'phone' => strip_tags($this->phone),
+                'visiable' => strip_tags($this->visiable),
+                'blog_post_id' => $this->blog_post_id
             ]);
             $this->ResetVars();
 
